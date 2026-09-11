@@ -9,4 +9,15 @@ readings = [
 def list_devices(devices):
     for device in devices:
         print(f"Device: {device['name']}, Temperature: {device['temp']}")
-        
+
+def average_temp(devices):
+    total = sum(device['temp'] for device in devices)
+    return total / len(devices) if devices else 0
+
+list_devices(readings)
+print(f"Average Temperature: {average_temp(readings):.2f}") 
+
+def hottest(devices):
+    return max(devices, key=lambda device: device['temp'])
+
+print(f"Hottest Device: {hottest(readings)['name']}, Temperature: {hottest(readings)['temp']}")
